@@ -25,6 +25,15 @@ class LoginController extends Controller
      *
      * @var string
      */
+    public function username()
+    {
+        $login = request()->input('identity');
+
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$field => $login]);
+        return $field;
+    }
+
     protected $redirectTo = '/home';
 
     /**
