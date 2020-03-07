@@ -13,8 +13,9 @@ class ClassSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['name' => "RPL"],
-            ['name' => "BDP"],
+            ['name' => "X"],
+            ['name' => "XI"],
+            ['name' => "XII"],
         ];
 
         ClassUser::insert($data);
