@@ -13,10 +13,10 @@ class JurusanSeeder extends Seeder
     public function run()
     {
         $data = [
-            ['name' => "RPL"],
-            ['name' => "BDP"],
-            ['name' => "MM"],
-            ['name' => "TKJ"],
+            ['name' => "Rekayasa Perangkat Lunak"],
+            ['name' => "Teknik Komputer dan Jaringan"],
+            ['name' => "Multimedia"],
+            ['name' => "Bisnis Daring dan Pemasaran"],
         ];
 
         Jurusan::insert($data);

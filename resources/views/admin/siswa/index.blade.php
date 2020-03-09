@@ -21,17 +21,14 @@
                     </div>
                     <div class="table-responsive px-4">
                         @include('utilities.message')
-                        <table id="example" class="table table-striped table-bordered">
+                        <table class="table table-striped table-bordered datatable">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">{{ __('NO')}}</th>
+                                    <th scope="col" class="text-center">{{ __('NO')}}</th>
                                     <th scope="col">{{ __('Nama') }}</th>
-                                    <th scope="col">{{ __('Alamat') }}</th>
-                                    <th scope="col">{{ __('Tanggal Lahir') }}</th>
-                                    <th scope="col">{{ __('Jenis Kelamin') }}</th>
                                     <th scope="col">{{ __('Kelas') }}</th>
                                     <th scope="col">{{ __('jurusan') }}</th>
-                                    <th scope="col">{{ __('Aksi')}}</th>
+                                    <th scope="col" class="text-center">{{ __('Aksi')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,16 +36,16 @@
                                     <tr>
                                         <td class="text-center">{{$loop->iteration}}</td>
                                         <td>{{ $siswa->name }}</td>
-                                        <td>{{ $siswa->alamat }}</td>
-                                        <td>{{ $siswa->tanggal_lahir}}</td>
-                                        <td>{{ $siswa->jenkel}}</td>
                                         <td>{{ $siswa->class->name ?? ''}}</td>
                                         <td>{{ $siswa->jurusan->name ?? ''}}</td>
                                         <td class="text-center">
-                                            <a href="#" class="btn btn-sm btn-primary mr-1 btn-edit" data-toggle="tooltip" title="Ubah data">
+                                            <a class="btn btn-sm btn-info btn-show" href="#" value="{{route('admin.student.show',$siswa->id)}}" data-id="#" data-toggle="tooltip" title="Detail Siswa">
+                                                <i class="fa fa-info"></i>
+                                                {{-- {{dd($siswa->class->name )}} --}}
+                                            <a href="#" class="btn btn-sm btn-primary mr-1 btn-edit" data-id="{{$siswa->id}}" data-name="{{$siswa->name}}" data-address="{{$siswa->alamat}}" data-birth="{{$siswa->tanggal_lahir}}" data-gender="{{$siswa->jenkel}}" data-kelas="{{$siswa->class->name ?? ''}}" data-kelasid="{{$siswa->class_id}}" data-major="{{$siswa->jurusan->name ?? ''}}" data-majorid="{{$siswa->jurusan_id}}" data-toggle="tooltip" title="Ubah data">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="{{ $siswa->id }}" data-url="#" data-toggle="tooltip" title="Hapus data">
+                                            <a href="" class="btn btn-sm btn-danger btn-delete" data-id="{{ $siswa->id }}" data-url="{{route('admin.student.destroy', $siswa->id)}}" data-toggle="tooltip" title="Hapus data">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
@@ -60,6 +57,9 @@
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">
                             @include('admin.siswa.modal')
+                            @include('admin.siswa.modaledit')
+                            @include('admin.siswa.detail')
+                            @include('partial.modaldelete')
                         </nav>
                     </div>
                 </div>
@@ -68,29 +68,7 @@
         @include('layouts.footers.auth')
     </div>
 @endsection
-
 @push('js')
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            'pagingType' : 'numbers'
-        });
-    });
-    $('#add').on('click', function(e) {
-        e.preventDefault();
-        $('#formModal').modal('show');
-    });
-    $('.btn-edit').on('click', function(e) {
-        e.preventDefault();
-        const $row = $(this).closest('tr');
-        const id = $(this).data('id');
-
-        $('#formModal').modal('show');
-        $('#formModal').find('form').attr('action', url +'/'+ id);
-        $('input[name="_method"]').prop('disabled', false);
-        $('#name').val(
-            $row.find('td').eq(1).text()
-        );
-    });
-</script>
+@include('admin.siswa.script')
+@include('partial.datatable')
 @endpush
