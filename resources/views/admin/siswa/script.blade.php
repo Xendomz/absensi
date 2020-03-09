@@ -1,4 +1,12 @@
 <script>
+    const url  = '{{ route("admin.student.store") }}';
+
+    $('.datepicker').datepicker({
+                format: 'yy/mm/dd',
+                autoclose: true,
+                todayHighlight: true
+    });
+
     $('#add').on('click', function(e) {
             e.preventDefault();
             $('#formModalEdit').modal('show');
@@ -18,7 +26,7 @@
         console.log(address);
 
         $('#formModal').modal('show');
-        // $('#formModal').find('form').attr('action', url +'/'+ id);
+        $('#formModal').find('form').attr('action', url +'/'+ id);
         $('input[name="_method"]').prop('disabled', false);
         $('#name').val(name);
         $('#lahir').val(birth);
@@ -53,7 +61,7 @@
         $('#modal-delete').find('form').attr('action', url);
         $('input[name="_method"]').prop('disabled', false);
     });
-    
+
     $('.btn-show').on('click', function(e) {
             e.preventDefault();
             console.log("oke");

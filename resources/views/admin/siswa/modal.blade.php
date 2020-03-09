@@ -9,8 +9,9 @@
           </button>
         </div>
         <div class="modal-body">
-            <form method="post" action="{{ route('admin.student.store') }}" autocomplete="off">
+            <form method="post" action="" autocomplete="off">
                 @csrf
+                @method('PUT')
                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                         <label class="form-control-label" for="input-name">{{ __('Nama') }}</label>
                         <input type="text" name="name" id="name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required autofocus>
