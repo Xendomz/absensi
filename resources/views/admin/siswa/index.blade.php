@@ -41,7 +41,6 @@
                                         <td class="text-center">
                                             <a class="btn btn-sm btn-info btn-show" href="#" value="{{route('admin.student.show',$siswa->id)}}" data-id="#" data-toggle="tooltip" title="Detail Siswa">
                                                 <i class="fa fa-info"></i>
-                                                {{-- {{dd($siswa->class->name )}} --}}
                                             <a href="#" class="btn btn-sm btn-primary mr-1 btn-edit" data-id="{{$siswa->id}}" data-name="{{$siswa->name}}" data-address="{{$siswa->alamat}}" data-birth="{{$siswa->tanggal_lahir}}" data-gender="{{$siswa->jenkel}}" data-kelas="{{$siswa->class->name ?? ''}}" data-kelasid="{{$siswa->class_id}}" data-major="{{$siswa->jurusan->name ?? ''}}" data-majorid="{{$siswa->jurusan_id}}" data-toggle="tooltip" title="Ubah data">
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -56,10 +55,7 @@
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">
-                            @include('admin.siswa.modal')
-                            @include('admin.siswa.modaledit')
-                            @include('admin.siswa.detail')
-                            @include('partial.modaldelete')
+
                         </nav>
                     </div>
                 </div>
@@ -67,6 +63,10 @@
         </div>
         @include('layouts.footers.auth')
     </div>
+    @include('admin.siswa.modal')
+    @include('admin.siswa.modaledit')
+    @include('admin.siswa.detail')
+    @include('partial.modaldelete')
 @endsection
 @push('js')
 @include('admin.siswa.script')

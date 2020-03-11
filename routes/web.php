@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'admin','namespace' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('student', 'SiswaController');
+        Route::get('absensi','AbsensiController@index')->name('absensi.index');
+        Route::get('history','AbsensiController@history')->name('absensi.history');
     });
 });
 

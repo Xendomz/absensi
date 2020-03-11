@@ -33,17 +33,17 @@
         if (gender !== '') {
         $('#gender').val(gender).text(gender);
         } else {
-        $('#gender').text('Pilih Jenis Kelamin Siswa');
+        $('#gender').val('').text('Pilih Jenis Kelamin Siswa');
         }
         if (kelasId !== '') {
-        $('#class').val(kelasId).text(kelas);   
+        $('#class').val(kelasId).text(kelas);
         } else {
-        $('#class').text('Pilih Kelas Siswa');   
+        $('#class').val('').text('Pilih Kelas Siswa');
         }
         if (major !== '') {
         $('#major').val(majorId).text(major);
         } else {
-        $('#major').text("Pilih Jurusan Siswa");
+        $('#major').val('').text("Pilih Jurusan Siswa");
         }
         if (address !== '') {
         $('#address').val(address);

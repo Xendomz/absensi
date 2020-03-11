@@ -18,4 +18,9 @@ class Siswa extends Model
     {
         return $this->belongsTo(Jurusan::class);
     }
+
+    public function absen()
+    {
+        return $this->hasOne(Absensi::class);
+    }
 }

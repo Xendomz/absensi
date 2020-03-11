@@ -43,6 +43,8 @@ class SiswaSeeder extends Seeder
             $no = $key + 1;
             $data[] = [
                     'name' => $value,
+                    'class_id' => rand(1,3),
+                    'jurusan_id' => rand(1,4),
                     'created_at' => now(),
                     'updated_at' => now()
             ];
